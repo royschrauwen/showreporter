@@ -8,7 +8,7 @@ import NewReport from "./Pages/NewReport";
 function App() {
   return (
     <div className="App">
-      <Header className="header" pageName="" />
+      <Header className="header" pageName="Eftelogboek" />
       {/* <HomePage /> */}
       {/* <ShowReportList /> */}
       <NewReport />
