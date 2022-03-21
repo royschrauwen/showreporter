@@ -28,10 +28,10 @@ const Navbar = () => {
           icon={<AddCircleOutlineIcon />}
         />
         <BottomNavigationAction label="Show Reports" icon={<ListAltIcon />} />
-        <BottomNavigationAction
+        {/* <BottomNavigationAction
           label="ToDo List"
           icon={<FormatListNumberedIcon />}
-        />
+        /> */}
       </BottomNavigation>
     </Paper>
   );
