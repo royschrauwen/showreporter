@@ -8,9 +8,9 @@ import NewReport from "./Pages/NewReport";
 function App() {
   return (
     <div className="App">
-      <Header pageName="ShowreportList" />
-      <HomePage />
-      <ShowReportList />
+      <Header className="header" pageName="" />
+      {/* <HomePage /> */}
+      {/* <ShowReportList /> */}
       <NewReport />
       <Navbar />
     </div>

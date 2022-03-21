@@ -6,66 +6,52 @@ import Button from "@mui/material/Button";
 const NewReport = () => {
   return (
     <>
-      <h3>New Report</h3>
+      <h3 className="new-report-header">New Report</h3>
       <div className="new-report-container">
         <TextField
           className="new-report-text"
           required
           id="standard-required"
-          label="Required"
-          defaultValue="Hello World"
+          label="Input"
           variant="standard"
+          margin="dense"
         />
         <TextField
           className="new-report-text"
-          disabled
+          type="search"
           id="standard-disabled"
-          label="Disabled"
-          defaultValue="Hello World"
+          label="Input"
           variant="standard"
+          margin="dense"
         />
         <TextField
           className="new-report-text"
           id="standard-password-input"
-          label="Password"
-          type="password"
-          autoComplete="current-password"
-          variant="standard"
+          label="Input"
+          type="search"
+          variant="filled"
+          margin="dense"
         />
-        <TextField
-          className="new-report-text"
-          id="standard-read-only-input"
-          label="Read Only"
-          defaultValue="Hello World"
-          InputProps={{
-            readOnly: true,
-          }}
-          variant="standard"
-        />
-        <TextField
-          className="new-report-text"
-          id="standard-number"
-          label="Number"
-          type="number"
-          InputLabelProps={{
-            shrink: true,
-          }}
-          variant="standard"
-        />
+
         <TextField
           className="new-report-text"
           id="standard-search"
-          label="Search field"
+          label="Input"
           type="search"
-          variant="standard"
+          variant="filled"
+          margin="dense"
         />
         <TextField
           className="new-report-text"
-          id="standard-helperText"
-          label="Helper text"
-          defaultValue="Default Value"
-          helperText="Some important text"
-          variant="standard"
+          label="Input"
+          id="margin-normal"
+          margin="dense"
+        />
+        <TextField
+          className="new-report-text"
+          label="Input"
+          id="margin-normal"
+          margin="dense"
         />
         <Button variant="contained">Save</Button>
       </div>
