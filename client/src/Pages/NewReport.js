@@ -13,6 +13,7 @@ import { styled } from "@mui/material/styles";
 import Grid from "@mui/material/Grid";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
+import ShowItemRadio from "../Components/ShowItemRadio";
 
 const NewReport = () => {
   const [age, setAge] = React.useState("");
@@ -23,7 +24,6 @@ const NewReport = () => {
 
   return (
     <>
-      <h3 className="new-report-header">New Report</h3>
       <div className="new-report-container">
         <TextField
           className="new-report-text"
@@ -34,6 +34,16 @@ const NewReport = () => {
           margin="normal"
           defaultValue="Caro"
         />
+
+        <TextField
+          className="new-report-text"
+          id="standard-required"
+          label="Bijzonderheden"
+          variant="outlined"
+          margin="normal"
+        />
+
+        <ShowItemRadio />
 
         <Grid container rowSpacing={1} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
           <Grid item xs={6}>
@@ -162,7 +172,9 @@ const NewReport = () => {
           margin="normal"
           variant="outlined"
         />
-        <Button variant="contained">Save</Button>
+        <Button className="primary-save" variant="contained">
+          Save
+        </Button>
       </div>
     </>
   );

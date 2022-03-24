@@ -1,20 +1,24 @@
 .App {
   text-align: center;
-  font-family: Roboto, sans-serif;
+  font-family: "Open Sans", "Roboto", sans-serif;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Roboto Slab", "Open Sans", "Roboto", sans-serif;
+  /* color: #b71234; */
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+#page-body {
+  margin: 1rem 0.5rem 5.5rem 0.5rem;
+  /* background-color: pink; */
 }
 
-.App-header {
+/* .App-header {
   background-color: #282c34;
   min-height: 100vh;
   display: flex;
@@ -23,20 +27,7 @@
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
-}
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
+} */
 
 .navbar {
   background-color: pink;
@@ -69,17 +60,39 @@
   align-items: center;
 }
 
-.new-report-container button {
+.new-report-container .primary-save {
   margin-top: 2rem;
   margin-bottom: 5rem;
   width: 80%;
   height: 4rem;
-}
-
-.new-report-container input {
-  /* background-color: red; */
+  background-color: #b71234;
+  font-family: "Roboto Slab", "Open Sans", "Roboto", sans-serif;
+  color: #ffffff;
+  font-size: 1.5rem;
 }
 
 .new-report-header {
   margin-top: 2rem;
+}
+
+.header-bar {
+  background-color: #b71234;
+  font-family: "Roboto Slab", "Open Sans", "Roboto", sans-serif;
+}
+
+.new-log-form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: baseline;
+}
+
+.new-log-input {
+  /* background-color: aqua; */
+  width: 100%;
+}
+
+.new-log-input input {
+  /* background-color: gold; */
+  width: 80vw;
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import HomeIcon from "@mui/icons-material/Home";
@@ -6,9 +6,11 @@ import ListAltIcon from "@mui/icons-material/ListAlt";
 import Paper from "@mui/material/Paper";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
 import FormatListNumberedIcon from "@mui/icons-material/FormatListNumbered";
+import { Link } from "react-router-dom";
+import ManageSearchIcon from "@mui/icons-material/ManageSearch";
 
-const Navbar = () => {
-  const [value, setValue] = React.useState(0);
+const Navbar = ({ setCurrentPageName }) => {
+  const [value, setValue] = useState(0);
 
   return (
     <Paper
@@ -17,17 +19,49 @@ const Navbar = () => {
     >
       <BottomNavigation
         showLabels
+        className="bottom-navbar"
         value={value}
         onChange={(event, newValue) => {
           setValue(newValue);
+          setCurrentPageName(newValue);
         }}
       >
-        <BottomNavigationAction label="Home" icon={<HomeIcon />} />
+        {/* <BottomNavigationAction
+          component={Link}
+          to="/"
+          label="Home"
+          icon={<HomeIcon />}
+          value="Home"
+        /> */}
         <BottomNavigationAction
-          label="New Report"
+          component={Link}
+          to="/logboek"
+          label="Logboek"
+          value="Logboek"
+          icon={<ListAltIcon />}
+        />
+        <BottomNavigationAction
+          component={Link}
+          to="/logboek/nieuw"
+          label="Nieuwe Log"
+          value="Nieuwe Log"
           icon={<AddCircleOutlineIcon />}
         />
-        <BottomNavigationAction label="Show Reports" icon={<ListAltIcon />} />
+
+        <BottomNavigationAction
+          component={Link}
+          to="/logboek/zoek"
+          label="Zoek"
+          value="Zoek"
+          icon={<ManageSearchIcon />}
+        />
+        {/* <BottomNavigationAction
+          component={Link}
+          to="/todo"
+          label="ToDo"
+          icon={<FormatListNumberedIcon />}
+          value="ToDo"
+        /> */}
         {/* <BottomNavigationAction
           label="ToDo List"
           icon={<FormatListNumberedIcon />}
