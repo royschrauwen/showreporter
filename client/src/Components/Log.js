@@ -1,23 +1,65 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 
 const Log = ({ itemData }) => {
   //   console.log(itemData);
-  var maxLength = 50;
-  var trimmedString = itemData.bericht.substr(0, maxLength);
-  trimmedString = trimmedString.substr(
-    0,
-    Math.min(trimmedString.length, trimmedString.lastIndexOf(" "))
-  );
+
+  const [activeLog, setActiveLog] = useState(false);
+
+  const maanden = [
+    "januari",
+    "februari",
+    "maart",
+    "april",
+    "mei",
+    "juni",
+    "juli",
+    "augustus",
+    "september",
+    "oktober",
+    "november",
+    "december",
+  ];
+
+  var maxLength = 100;
+  var bericht = itemData.bericht;
+
+  const trimString = () => {
+    var trimmedString = itemData.bericht.substr(0, maxLength);
+    trimmedString = trimmedString.substr(
+      0,
+      Math.min(trimmedString.length, trimmedString.lastIndexOf(" "))
+    );
+    bericht = itemData.toneelmeester + ": " + trimmedString + "...";
+  };
+
+  trimString();
+
+  useEffect(() => {
+    if (!activeLog) {
+      trimString();
+    } else {
+      bericht = itemData.bericht;
+    }
+  }, [activeLog]);
+
+  const handleLogClick = () => {
+    window.location.replace("../log?id=" + itemData.log_id);
+  };
+
+  const formattedDatum =
+    parseInt(itemData.datum.substr(8, 2)) +
+    1 +
+    " " +
+    maanden[parseInt(itemData.datum.substr(5, 2)) - 1] +
+    " " +
+    itemData.datum.substr(0, 4);
   return (
     <>
-      <ListItem>
-        <ListItemText
-          primary={itemData.datum}
-          secondary={itemData.toneelmeester + ": " + trimmedString + "..."}
-        />
+      <ListItem onClick={handleLogClick}>
+        <ListItemText primary={formattedDatum} secondary={bericht} />
       </ListItem>
       <Divider />
 

@@ -14,7 +14,7 @@ h6 {
 }
 
 #page-body {
-  margin: 1rem 0.5rem 5.5rem 0.5rem;
+  margin: 3.5rem 0.5rem 5.5rem 0.5rem;
   /* background-color: pink; */
 }
 
@@ -85,6 +85,7 @@ h6 {
   flex-direction: column;
   justify-content: center;
   align-items: baseline;
+  padding-top: 1rem;
 }
 
 .new-log-input {
@@ -95,4 +96,75 @@ h6 {
 .new-log-input input {
   /* background-color: gold; */
   width: 80vw;
+}
+
+.new-log-input textarea {
+  /* background-color: gold; */
+  width: 80vw;
+}
+
+.new-log-input-button {
+  width: 87vw;
+  height: 4rem;
+  background-color: #b71234;
+  font-family: "Roboto Slab", "Open Sans", "Roboto", sans-serif;
+  color: #ffffff;
+  font-size: 1.5rem;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  margin-top: 1.5rem;
+  border-radius: 0.25rem;
+}
+
+.new-log-input-button:hover {
+  background-color: #8b0d26;
+}
+
+.zoekKnop {
+  background-color: #b71234;
+  font-family: "Roboto Slab", "Open Sans", "Roboto", sans-serif;
+  color: #ffffff;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  border: none;
+  cursor: pointer;
+  margin-top: 1.5rem;
+  border-radius: 0.25rem;
+  padding: 0.9rem 1rem;
+  margin-top: -0.1rem;
+  margin-left: 0.5rem;
+}
+
+.zoekKnop:hover {
+  background-color: #8b0d26;
+}
+
+.logboek-zoek-container {
+  /* background-color: gold; */
+  margin-top: 4.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.single-log-container {
+  font-size: 0.9rem;
+  white-space: pre-line;
+  text-align: left;
+  padding: 0.5rem;
+}
+
+.single-log fieldset {
+  border-color: rgba(139, 13, 38, 0.3);
+  margin-top: 1.5rem;
+  border-bottom: none;
+  border-left: none;
+  border-right: none;
+}
+
+.single-log legend {
+  font-weight: 700;
+  transform: translateY(-0.2rem);
 }

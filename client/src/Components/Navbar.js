@@ -48,13 +48,13 @@ const Navbar = ({ setCurrentPageName }) => {
           icon={<AddCircleOutlineIcon />}
         />
 
-        <BottomNavigationAction
+        {/* <BottomNavigationAction
           component={Link}
           to="/logboek/zoek"
           label="Zoek"
           value="Zoek"
           icon={<ManageSearchIcon />}
-        />
+        /> */}
         {/* <BottomNavigationAction
           component={Link}
           to="/todo"

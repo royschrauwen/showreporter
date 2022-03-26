@@ -12,7 +12,31 @@ const themeOptions = {
       main: "#b71234",
     },
     secondary: {
-      main: "#f50057",
+      main: "#12b796",
+    },
+  },
+  typography: {
+    h1: {
+      fontFamily: "Roboto Slab",
+    },
+    h2: {
+      fontFamily: "Roboto Slab",
+    },
+    h3: {
+      fontFamily: "Roboto Slab",
+    },
+    h4: {
+      fontFamily: "Roboto Slab",
+    },
+    h5: {
+      fontFamily: "Roboto Slab",
+    },
+    h6: {
+      fontFamily: "Roboto Slab",
+    },
+    fontFamily: "Open Sans",
+    button: {
+      fontFamily: "Roboto Slab",
     },
   },
 };

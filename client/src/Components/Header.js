@@ -156,9 +156,9 @@ const Header = ({ pageName }) => {
 
   return (
     <Box sx={{ flexGrow: 1 }}>
-      <AppBar position="static" className="header-bar">
+      <AppBar className="header-bar">
         <Toolbar>
-          <IconButton
+          {/* <IconButton
             size="large"
             edge="start"
             color="inherit"
@@ -167,7 +167,7 @@ const Header = ({ pageName }) => {
             onClick={handleProfileMenuOpen}
           >
             <MenuIcon />
-          </IconButton>
+          </IconButton> */}
           <Typography
             variant="h6"
             noWrap
@@ -184,7 +184,7 @@ const Header = ({ pageName }) => {
               inputProps={{ "aria-label": "search" }}
             />
           </Search> */}
-          <Box sx={{ flexGrow: 1 }} />
+          {/* <Box sx={{ flexGrow: 1 }} />
           <Box sx={{ display: { xs: "none", md: "flex" } }}>
             <IconButton
               size="large"
@@ -227,7 +227,7 @@ const Header = ({ pageName }) => {
             >
               <MoreIcon />
             </IconButton>
-          </Box>
+          </Box> */}
         </Toolbar>
       </AppBar>
       {renderMobileMenu}

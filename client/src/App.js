@@ -24,6 +24,8 @@ import ToDoListPage from "./Pages/ToDoListPage";
 
 import LogboekListPage from "./Pages/LogboekListPage";
 import NewLogPage from "./Pages/NewLogPage";
+import MainPage from "./Pages/MainPage";
+import SingleLogPage from "./Pages/SingleLogPage";
 
 function App() {
   const [currentPageName, setCurrentPageName] = useState("Logboek");
@@ -36,9 +38,11 @@ function App() {
           <Routes>
             <Route path="/report/new" element={<NewReport />} />
             <Route path="/report" element={<ShowReportList />} />
+            <Route path="/main" element={<MainPage />} />
             <Route path="/logboek/nieuw" element={<NewLogPage />} />
             <Route path="/logboek/zoek" element={<NewLogPage />} />
             <Route path="/logboek" element={<LogboekListPage />} />
+            <Route path="/log" element={<SingleLogPage />} />
             <Route path="/todo" element={<ToDoListPage />} />
             <Route exact path="/" element={<LogboekListPage />} />
             <Route path="*" element={<HomePage />} />
