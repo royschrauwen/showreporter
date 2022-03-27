@@ -65,10 +65,13 @@ app.post("/api/create", (req, res) => {
   const toneelmeester = req.body.toneelmeester;
   const datum = formattedDatum;
   const bericht = req.body.bericht;
+  const theater = req.body.theater;
+  const schoonmaak = req.body.schoonmaak;
+  const overig = req.body.overig;
 
   db.query(
-    "INSERT INTO logs (toneelmeester, datum, bericht) VALUES (?,?,?)",
-    [toneelmeester, datum, bericht],
+    "INSERT INTO logs (toneelmeester, datum, bericht, theater, schoonmaak, overig) VALUES (?,?,?,?,?,?)",
+    [toneelmeester, datum, bericht, theater, schoonmaak, overig],
     (err, result) => {
       if (err) {
         console.log(err);

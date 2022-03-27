@@ -30,12 +30,18 @@ const NewLogPage = () => {
   const [logDatum, setLogDatum] = useState("");
   const [logToneelmeester, setLogToneelmeester] = useState("");
   const [logBericht, setLogBericht] = useState("");
+  const [logTheater, setLogTheater] = useState("");
+  const [logSchoonmaak, setLogSchoonmaak] = useState("");
+  const [logOverig, setLogOverig] = useState("");
 
   const submitPost = () => {
     axios.post("http://192.168.2.4:3002/api/create", {
       datum: logDatum,
       toneelmeester: logToneelmeester,
       bericht: logBericht,
+      theater: logTheater,
+      schoonmaak: logSchoonmaak,
+      overig: logOverig,
     });
   };
 
@@ -105,6 +111,9 @@ const NewLogPage = () => {
           label="Theater"
           variant="outlined"
           margin="normal"
+          onChange={(e) => {
+            setLogTheater(e.target.value);
+          }}
         />
       </div>
       <div className="new-log-input">
@@ -126,9 +135,12 @@ const NewLogPage = () => {
           required
           multiline
           id="standard-required"
-          label="Foyer"
+          label="Schoonmaak"
           variant="outlined"
           margin="normal"
+          onChange={(e) => {
+            setLogSchoonmaak(e.target.value);
+          }}
         />
       </div>
 
@@ -137,9 +149,12 @@ const NewLogPage = () => {
           required
           multiline
           id="standard-required"
-          label="Schoonmaak"
+          label="Overig"
           variant="outlined"
           margin="normal"
+          onChange={(e) => {
+            setLogOverig(e.target.value);
+          }}
         />
       </div>
 

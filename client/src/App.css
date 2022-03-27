@@ -141,7 +141,7 @@ h6 {
 }
 
 .logboek-zoek-container {
-  /* background-color: gold; */
+  /* background-color: aqua; */
   margin-top: 4.5rem;
   display: flex;
   justify-content: center;
@@ -167,4 +167,21 @@ h6 {
 .single-log legend {
   font-weight: 700;
   transform: translateY(-0.2rem);
+}
+
+.logboeklistpagecontainer {
+  /* background-color: gold; */
+}
+
+.logListItem {
+  cursor: pointer;
+}
+
+.showData ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.showData ul span {
+  font-weight: 700;
 }

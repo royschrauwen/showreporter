@@ -28,7 +28,7 @@ import MainPage from "./Pages/MainPage";
 import SingleLogPage from "./Pages/SingleLogPage";
 
 function App() {
-  const [currentPageName, setCurrentPageName] = useState("Logboek");
+  const [currentPageName, setCurrentPageName] = useState("LOGBOEK");
 
   return (
     <Router>

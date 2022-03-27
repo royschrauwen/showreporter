@@ -58,7 +58,14 @@ const Log = ({ itemData }) => {
     itemData.datum.substr(0, 4);
   return (
     <>
-      <ListItem onClick={handleLogClick}>
+      <ListItem
+        sx={{
+          width: "900px",
+          maxWidth: "100vw",
+        }}
+        className="logListItem"
+        onClick={handleLogClick}
+      >
         <ListItemText primary={formattedDatum} secondary={bericht} />
       </ListItem>
       <Divider />
