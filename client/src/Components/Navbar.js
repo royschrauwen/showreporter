@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import BottomNavigation from "@mui/material/BottomNavigation";
 import BottomNavigationAction from "@mui/material/BottomNavigationAction";
 import HomeIcon from "@mui/icons-material/Home";
+import ListIcon from "@mui/icons-material/ListAlt";
 import ListAltIcon from "@mui/icons-material/ListAlt";
 import Paper from "@mui/material/Paper";
 import AddCircleOutlineIcon from "@mui/icons-material/AddCircleOutline";
@@ -43,9 +44,9 @@ const Navbar = ({ setCurrentPageName }) => {
         <BottomNavigationAction
           component={Link}
           to="/logboek/nieuw"
-          label="Nieuwe Log"
+          label="Schoonmaaklijst"
           value="Nieuwe Log"
-          icon={<AddCircleOutlineIcon />}
+          icon={<ListIcon />}
         />
 
         {/* <BottomNavigationAction

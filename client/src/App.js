@@ -17,38 +17,30 @@ import "./App.css";
 import Header from "./Components/Header";
 import HomePage from "./Pages/HomePage";
 
-import Navbar from "./Components/Navbar";
-import ShowReportList from "./Pages/ShowReportList";
-import NewReport from "./Pages/NewReport";
-import ToDoListPage from "./Pages/ToDoListPage";
-
 import LogboekListPage from "./Pages/LogboekListPage";
 import NewLogPage from "./Pages/NewLogPage";
-import MainPage from "./Pages/MainPage";
 import SingleLogPage from "./Pages/SingleLogPage";
+
+import LayoutPage from "./Pages/LayoutPage";
 
 function App() {
   const [currentPageName, setCurrentPageName] = useState("LOGBOEK");
 
   return (
     <Router>
+      <Header className="header" pageName={currentPageName} />
       <div className="App">
-        <Header className="header" pageName={currentPageName} />
-        <div id="page-body">
-          <Routes>
-            <Route path="/report/new" element={<NewReport />} />
-            <Route path="/report" element={<ShowReportList />} />
-            <Route path="/main" element={<MainPage />} />
+        {/* <div id="page-body"> */}
+        <Routes>
+          <Route path="/" element={<LayoutPage />}>
+            <Route index element={<LogboekListPage />} />
+            <Route path="/logboek" element={<LogboekListPage />} />
             <Route path="/logboek/nieuw" element={<NewLogPage />} />
             <Route path="/logboek/zoek" element={<NewLogPage />} />
-            <Route path="/logboek" element={<LogboekListPage />} />
             <Route path="/log" element={<SingleLogPage />} />
-            <Route path="/todo" element={<ToDoListPage />} />
-            <Route exact path="/" element={<LogboekListPage />} />
             <Route path="*" element={<HomePage />} />
-          </Routes>
-        </div>
-        <Navbar setCurrentPageName={setCurrentPageName} />
+          </Route>
+        </Routes>
       </div>
     </Router>
   );

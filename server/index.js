@@ -31,6 +31,12 @@ app.get("/api/logs/zoek/:q", (req, res) => {
       db.escape(q).replace("'", "").replace("'", "") +
       '%" OR  toneelmeester LIKE "%' +
       db.escape(q).replace("'", "").replace("'", "") +
+      '%" OR  theater LIKE "%' +
+      db.escape(q).replace("'", "").replace("'", "") +
+      '%" OR  overig LIKE "%' +
+      db.escape(q).replace("'", "").replace("'", "") +
+      '%" OR  schoonmaak LIKE "%' +
+      db.escape(q).replace("'", "").replace("'", "") +
       '%"',
     q,
     (err, result) => {

@@ -71,6 +71,16 @@ const Header = ({ pageName }) => {
     setMobileMoreAnchorEl(null);
   };
 
+  const openLogboek = () => {
+    handleMenuClose();
+    window.location.replace("../logboek");
+  };
+
+  const nieuwLog = () => {
+    handleMenuClose();
+    window.location.replace("../logboek/nieuw");
+  };
+
   const handleMenuClose = () => {
     setAnchorEl(null);
     handleMobileMenuClose();
@@ -97,8 +107,8 @@ const Header = ({ pageName }) => {
       open={isMenuOpen}
       onClose={handleMenuClose}
     >
-      <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
-      <MenuItem onClick={handleMenuClose}>My account</MenuItem>
+      <MenuItem onClick={openLogboek}>Toon Logboek</MenuItem>
+      {/* <MenuItem onClick={handleMenuClose}>My account</MenuItem> */}
     </Menu>
   );
 
@@ -158,7 +168,7 @@ const Header = ({ pageName }) => {
     <Box sx={{ flexGrow: 1 }}>
       <AppBar className="header-bar">
         <Toolbar>
-          {/* <IconButton
+          <IconButton
             size="large"
             edge="start"
             color="inherit"
@@ -167,7 +177,7 @@ const Header = ({ pageName }) => {
             onClick={handleProfileMenuOpen}
           >
             <MenuIcon />
-          </IconButton> */}
+          </IconButton>
           <Typography
             variant="h6"
             noWrap

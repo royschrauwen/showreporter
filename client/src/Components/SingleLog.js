@@ -1,4 +1,7 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+
+import IconButton from "@mui/material/IconButton";
+import EditIcon from "@mui/icons-material/Edit";
 
 const SingleLog = ({ logData }) => {
   const maanden = [
@@ -29,9 +32,25 @@ const SingleLog = ({ logData }) => {
     return formattedDatum;
   }
 
+  const handleEditClick = () => {
+    alert("Bericht wijzigen is nog niet mogelijk");
+  };
+
   return (
     <div className="single-log">
-      <h2>{datum}</h2>
+      <div className="single-log-header">
+        <h2>{datum}</h2>
+        <label htmlFor="icon-button-file">
+          <IconButton
+            color="primary"
+            aria-label="edit log"
+            component="span"
+            onClick={handleEditClick}
+          >
+            <EditIcon />
+          </IconButton>
+        </label>
+      </div>
       <h3>{logData[0].toneelmeester}</h3>
       <div className="showData">
         <ul>

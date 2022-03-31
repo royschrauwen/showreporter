@@ -1,6 +1,7 @@
 .App {
   text-align: center;
   font-family: "Open Sans", "Roboto", sans-serif;
+  /* background-color: #fafaf7; */
 }
 
 h1,
@@ -15,19 +16,7 @@ h6 {
 
 #page-body {
   margin: 3.5rem 0.5rem 5.5rem 0.5rem;
-  /* background-color: pink; */
 }
-
-/* .App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-} */
 
 .navbar {
   background-color: pink;
@@ -85,7 +74,9 @@ h6 {
   flex-direction: column;
   justify-content: center;
   align-items: baseline;
-  padding-top: 1rem;
+  padding-top: 4.5rem;
+  padding-bottom: 2rem;
+  background-color: #ffffff;
 }
 
 .new-log-input {
@@ -93,8 +84,9 @@ h6 {
   width: 100%;
 }
 
-.new-log-input input {
-  /* background-color: gold; */
+.new-log-input input,
+.new-log-input textarea {
+  background-color: #ffffff;
   width: 80vw;
 }
 
@@ -125,13 +117,13 @@ h6 {
   background-color: #b71234;
   font-family: "Roboto Slab", "Open Sans", "Roboto", sans-serif;
   color: #ffffff;
-  font-size: 1.25rem;
+  font-size: 1rem;
   text-transform: uppercase;
   border: none;
   cursor: pointer;
   margin-top: 1.5rem;
   border-radius: 0.25rem;
-  padding: 0.9rem 1rem;
+  padding: 0.8rem 1rem;
   margin-top: -0.1rem;
   margin-left: 0.5rem;
 }
@@ -141,7 +133,6 @@ h6 {
 }
 
 .logboek-zoek-container {
-  /* background-color: aqua; */
   margin-top: 4.5rem;
   display: flex;
   justify-content: center;
@@ -149,7 +140,12 @@ h6 {
   flex-direction: row;
 }
 
+.logboek-zoek-container input {
+  height: 1rem;
+}
+
 .single-log-container {
+  margin-top: 3rem;
   font-size: 0.9rem;
   white-space: pre-line;
   text-align: left;
@@ -171,6 +167,7 @@ h6 {
 
 .logboeklistpagecontainer {
   /* background-color: gold; */
+  margin-bottom: 3rem;
 }
 
 .logListItem {
@@ -184,4 +181,91 @@ h6 {
 
 .showData ul span {
   font-weight: 700;
+}
+
+.schoonmaak-list {
+  /* background-color: greenyellow; */
+  list-style: none;
+  text-align: left;
+  padding-left: 0.5rem;
+}
+
+.schoonmaak-list input[type="checkbox"] {
+  width: 30px;
+  height: 30px;
+  vertical-align: middle;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+}
+
+.single-log-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.FAB-niew-log {
+  position: fixed;
+  width: 60px;
+  height: 60px;
+  bottom: 20px;
+  right: 20px;
+  background-color: #b71234;
+  font-family: "Roboto Slab", "Open Sans", "Roboto", sans-serif;
+  color: #ffffff;
+  border-radius: 50%;
+  border: none;
+  text-align: center;
+  z-index: 10;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 3px 8px;
+}
+
+.FAB-niew-log:hover,
+.FAB-niew-log:focus {
+  background-color: #d35770;
+  box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 0px;
+}
+
+.navigatie {
+  background-color: gold;
+  display: flex;
+  justify-content: center;
+  height: 56px;
+  z-index: 50;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.navigatie ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  list-style: none;
+  padding-left: 0;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+}
+
+.navigatie li {
+  background-color: aqua;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+}
+
+.show-data {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.show-data-field {
+  width: 46%;
+}
+
+.new-log-form {
+  /* background-color: gold; */
+  margin: 1rem;
 }

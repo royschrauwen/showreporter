@@ -2,17 +2,70 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 import TextField from "@mui/material/TextField";
-import Button from "@mui/material/Button";
-import MenuItem from "@mui/material/MenuItem";
-import FormControl from "@mui/material/FormControl";
-import Select from "@mui/material/Select";
-import InputLabel from "@mui/material/InputLabel";
+// import Button from "@mui/material/Button";
+// import MenuItem from "@mui/material/MenuItem";
+// import FormControl from "@mui/material/FormControl";
+// import Select from "@mui/material/Select";
+// import InputLabel from "@mui/material/InputLabel";
 
-import Checkbox from "@mui/material/Checkbox";
-import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
-import Favorite from "@mui/icons-material/Favorite";
-import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
-import CheckBoxIcon from "@mui/icons-material/CheckBox";
+// import Checkbox from "@mui/material/Checkbox";
+// import FavoriteBorder from "@mui/icons-material/FavoriteBorder";
+// import Favorite from "@mui/icons-material/Favorite";
+// import CheckBoxOutlineBlankIcon from "@mui/icons-material/CheckBoxOutlineBlank";
+// import CheckBoxIcon from "@mui/icons-material/CheckBox";
+
+// import Radio from "@mui/material/Radio";
+// import RadioGroup from "@mui/material/RadioGroup";
+// import FormControlLabel from "@mui/material/FormControlLabel";
+// import FormLabel from "@mui/material/FormLabel";
+
+// import Accordion from "@mui/material/Accordion";
+// import AccordionDetails from "@mui/material/AccordionDetails";
+// import AccordionSummary from "@mui/material/AccordionSummary";
+// import Typography from "@mui/material/Typography";
+// import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+
+const schoonmaakLijst = [
+  {
+    name: "Schijf vegen",
+  },
+  {
+    name: "Toneel vegen",
+  },
+  {
+    name: "Opgang L+R vegen",
+  },
+  {
+    name: "Achtertoneel vegen",
+  },
+  {
+    name: "Schijf dweilen",
+  },
+  {
+    name: "Toneel dweilen",
+  },
+  {
+    name: "Opgang L+R dweilen",
+  },
+  {
+    name: "Balletvloer dweilen",
+  },
+  {
+    name: "Afvalbak Opgang Links",
+  },
+  {
+    name: "Afvalbak Opgang Rechts",
+  },
+  {
+    name: "Afvalbak Werkplaats",
+  },
+  {
+    name: "Afvalbak Kleedkamers achtertoneel",
+  },
+  {
+    name: "Afvalbak Kantoor",
+  },
+];
 
 const NewLogPage = () => {
   const handleSaveButton = async () => {
@@ -34,8 +87,27 @@ const NewLogPage = () => {
   const [logSchoonmaak, setLogSchoonmaak] = useState("");
   const [logOverig, setLogOverig] = useState("");
 
+  // Checkboxes van de schoonmaaklijst
+  const [checkedState, setCheckedState] = useState(
+    new Array(schoonmaakLijst.length).fill(false)
+  );
+
+  const handleOnChange = (position) => {
+    const updatedCheckedState = checkedState.map((item, index) =>
+      index === position ? !item : item
+    );
+
+    setCheckedState(updatedCheckedState);
+  };
+
+  // const [expanded, setExpanded] = useState(false);
+
+  // const handleChange = (panel) => (event, isExpanded) => {
+  //   setExpanded(isExpanded ? panel : false);
+  // };
+
   const submitPost = () => {
-    axios.post("http://192.168.2.4:3002/api/create", {
+    axios.post("http://localhost:3002/api/create", {
       datum: logDatum,
       toneelmeester: logToneelmeester,
       bericht: logBericht,
@@ -43,12 +115,6 @@ const NewLogPage = () => {
       schoonmaak: logSchoonmaak,
       overig: logOverig,
     });
-  };
-
-  const [age, setAge] = React.useState("");
-
-  const handleChange = (event) => {
-    setAge(event.target.value);
   };
 
   var today = new Date();
@@ -74,24 +140,6 @@ const NewLogPage = () => {
         />
       </div>
       <div className="new-log-input">
-        {/* <FormControl fullWidth> */}
-        {/* <InputLabel id="demo-simple-select-label">Toneelmeester</InputLabel>
-        <Select
-          required
-          labelId="demo-simple-select-label"
-          id="demo-simple-select"
-          value={age}
-          label="Toneelmeester"
-          onChange={handleChange}
-        >
-          <MenuItem value="Tom Netten">Tom Netten</MenuItem>
-          <MenuItem value="Paul Uphus">Paul Uphus</MenuItem>
-          <MenuItem value="Rens van Dijk">Rens van Dijk</MenuItem>
-          <MenuItem value="Peter Gijselhart">Peter Gijselhart</MenuItem>
-          <MenuItem value="Roy Schrauwen">Roy Schrauwen</MenuItem>
-          <MenuItem value="Anders...">Anders...</MenuItem>
-        </Select> */}
-        {/* </FormControl> */}
         <TextField
           required
           id="standard-required"
@@ -105,27 +153,13 @@ const NewLogPage = () => {
       </div>
       <div className="new-log-input">
         <TextField
-          required
           multiline
           id="standard-required"
-          label="Theater"
+          label="Opmerkingen Theater"
           variant="outlined"
           margin="normal"
           onChange={(e) => {
             setLogTheater(e.target.value);
-          }}
-        />
-      </div>
-      <div className="new-log-input">
-        <TextField
-          required
-          multiline
-          id="standard-required"
-          label="Show"
-          variant="outlined"
-          margin="normal"
-          onChange={(e) => {
-            setLogBericht(e.target.value);
           }}
         />
       </div>
@@ -135,7 +169,41 @@ const NewLogPage = () => {
           required
           multiline
           id="standard-required"
-          label="Schoonmaak"
+          label="Opmerkingen Show"
+          variant="outlined"
+          margin="normal"
+          onChange={(e) => {
+            setLogBericht(e.target.value);
+          }}
+        />
+        <div className="show-data">
+          <TextField
+            className="show-data-field"
+            id="standard-required"
+            label="Aantal bezoekers"
+            variant="outlined"
+            margin="normal"
+            onChange={(e) => {
+              setLogBericht(e.target.value);
+            }}
+          />
+          <TextField
+            className="show-data-field"
+            id="standard-required"
+            label="Voorstellingnummer"
+            variant="outlined"
+            margin="normal"
+            onChange={(e) => {
+              setLogBericht(e.target.value);
+            }}
+          />
+        </div>
+      </div>
+      <div className="new-log-input">
+        <TextField
+          multiline
+          id="standard-required"
+          label="Opmerkingen Schoonmaak"
           variant="outlined"
           margin="normal"
           onChange={(e) => {
@@ -145,11 +213,25 @@ const NewLogPage = () => {
       </div>
 
       <div className="new-log-input">
+        <div className="schoonmaak-list">
+          {schoonmaakLijst.map((item, index) => (
+            <div key={index}>
+              <input
+                value={item.name}
+                type="checkbox"
+                onChange={() => handleOnChange(index)}
+              />
+              <span>{item.name}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <div className="new-log-input">
         <TextField
-          required
           multiline
           id="standard-required"
-          label="Overig"
+          label="Overige opmerkingen"
           variant="outlined"
           margin="normal"
           onChange={(e) => {

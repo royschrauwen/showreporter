@@ -3,6 +3,10 @@ import Divider from "@mui/material/Divider";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
 
+import { useNavigate } from "react-router-dom";
+
+import { Link, Outlet } from "react-router-dom";
+
 const Log = ({ itemData }) => {
   //   console.log(itemData);
 
@@ -45,7 +49,10 @@ const Log = ({ itemData }) => {
     }
   }, [activeLog]);
 
+  const navigate = useNavigate();
+
   const handleLogClick = () => {
+    navigate("../log?id=" + itemData.log_id);
     window.location.replace("../log?id=" + itemData.log_id);
   };
 
@@ -58,16 +65,20 @@ const Log = ({ itemData }) => {
     itemData.datum.substr(0, 4);
   return (
     <>
+      {/* <Link to={`../log?id=${itemData.log_id}`}> */}
       <ListItem
         sx={{
           width: "900px",
           maxWidth: "100vw",
         }}
         className="logListItem"
-        onClick={handleLogClick}
+        onClick={(e) => {
+          handleLogClick(e.target.value);
+        }}
       >
         <ListItemText primary={formattedDatum} secondary={bericht} />
       </ListItem>
+      {/* </Link> */}
       <Divider />
 
       {/* <h3>Datum: {itemData.datum}</h3>
