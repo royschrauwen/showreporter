@@ -71,7 +71,8 @@ const NewLogPage = () => {
   const handleSaveButton = async () => {
     if (logDatum !== "" && logToneelmeester !== "" && logBericht !== "") {
       await submitPost();
-      window.location.replace("../logboek/");
+      //alert("invoer succesvol opgeslagen");
+      //window.location.replace("../logboek/");
     }
   };
 
@@ -107,14 +108,24 @@ const NewLogPage = () => {
   // };
 
   const submitPost = () => {
-    axios.post("http://localhost:3002/api/create", {
-      datum: logDatum,
-      toneelmeester: logToneelmeester,
-      bericht: logBericht,
-      theater: logTheater,
-      schoonmaak: logSchoonmaak,
-      overig: logOverig,
-    });
+    axios
+      .post("http://localhost:3002/api/create", {
+        datum: logDatum,
+        toneelmeester: logToneelmeester,
+        bericht: logBericht,
+        theater: logTheater,
+        schoonmaak: logSchoonmaak,
+        schoonmaakchecklist: checkedState,
+        overig: logOverig,
+      })
+      .then((response) => {
+        console.log(response.status);
+        if (response.status === 200) {
+          window.location.replace("../logboek/");
+        } else {
+          alert("Priobleem met opslaan. Geef even door aan Roy aub.");
+        }
+      });
   };
 
   var today = new Date();

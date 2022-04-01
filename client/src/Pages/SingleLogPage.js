@@ -13,6 +13,7 @@ const SingleLogPage = () => {
       var url = "http://localhost:3002/api/log/" + log_id;
       await axios(url).then((response) => {
         setLogData(response.data);
+        // console.log(new Date().getTimezoneOffset());
       });
     };
     showLog();

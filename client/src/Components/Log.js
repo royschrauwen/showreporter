@@ -27,6 +27,16 @@ const Log = ({ itemData }) => {
     "december",
   ];
 
+  const dagen = [
+    "zondag",
+    "maandag",
+    "dinsdag",
+    "woensdag",
+    "donderdag",
+    "vrijdag",
+    "zaterdag",
+  ];
+
   var maxLength = 100;
   var bericht = itemData.bericht;
 
@@ -56,13 +66,28 @@ const Log = ({ itemData }) => {
     window.location.replace("../log?id=" + itemData.log_id);
   };
 
-  const formattedDatum =
-    parseInt(itemData.datum.substr(8, 2)) +
-    1 +
+  let datum = itemData.datum;
+  const timeZoneDatum = new Date(datum);
+  //console.log(timeZoneDatum);
+  const timeZoneDatumFormatted =
+    dagen[timeZoneDatum.getDay()] +
     " " +
-    maanden[parseInt(itemData.datum.substr(5, 2)) - 1] +
+    timeZoneDatum.getDate() +
     " " +
-    itemData.datum.substr(0, 4);
+    maanden[timeZoneDatum.getMonth()] +
+    " " +
+    timeZoneDatum.getFullYear();
+  console.log(timeZoneDatumFormatted);
+
+  // const formattedDatum =
+  //   parseInt(datum.substr(8, 2)) +
+  //   " " +
+  //   maanden[parseInt(datum.substr(5, 2)) - 1] +
+  //   " " +
+  //   datum.substr(0, 4);
+
+  const formattedDatum = timeZoneDatumFormatted;
+
   return (
     <>
       {/* <Link to={`../log?id=${itemData.log_id}`}> */}

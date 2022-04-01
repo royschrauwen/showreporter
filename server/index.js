@@ -3,9 +3,18 @@ const db = require("./config/db");
 const cors = require("cors");
 
 const app = express();
-const PORT = 3002;
+const PORT = process.env.PORT || 3002;
 app.use(cors());
 app.use(express.json());
+
+// // Change Timezone to Dutch
+console.log(new Date().toString());
+process.env.TZ = "Europe/Amsterdam";
+console.log(new Date().toString());
+// const nDate = new Date().toLocaleString("NL", {
+//   timeZone: "Europe/Amsterdam",
+// });
+// console.log(nDate);
 
 // Route to get all posts
 app.get("/api/logs", (req, res) => {
@@ -13,7 +22,7 @@ app.get("/api/logs", (req, res) => {
     if (err) {
       console.log(err);
     }
-    // console.log(result);
+    //console.log(result);
     res.status(200).send(result);
   });
 });
@@ -73,11 +82,34 @@ app.post("/api/create", (req, res) => {
   const bericht = req.body.bericht;
   const theater = req.body.theater;
   const schoonmaak = req.body.schoonmaak;
+  const schoonmaakchecklist = req.body.schoonmaakchecklist;
   const overig = req.body.overig;
 
+  console.log(schoonmaakchecklist);
+
   db.query(
-    "INSERT INTO logs (toneelmeester, datum, bericht, theater, schoonmaak, overig) VALUES (?,?,?,?,?,?)",
-    [toneelmeester, datum, bericht, theater, schoonmaak, overig],
+    "INSERT INTO logs (toneelmeester, datum, bericht, theater, schoonmaak, vegen_schijf, vegen_toneel, vegen_opgang, vegen_achtertoneel, dweilen_schijf, dweilen_toneel, dweilen_opgang, dweilen_balletvloer, vuilnis_opgang_links, vuilnis_opgang_rechts, vuilnis_werkplaats, vuilnis_achtertoneel, vuilnis_kantoor, overig) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)",
+    [
+      toneelmeester,
+      datum,
+      bericht,
+      theater,
+      schoonmaak,
+      schoonmaakchecklist[0],
+      schoonmaakchecklist[1],
+      schoonmaakchecklist[2],
+      schoonmaakchecklist[3],
+      schoonmaakchecklist[4],
+      schoonmaakchecklist[5],
+      schoonmaakchecklist[6],
+      schoonmaakchecklist[7],
+      schoonmaakchecklist[8],
+      schoonmaakchecklist[9],
+      schoonmaakchecklist[10],
+      schoonmaakchecklist[11],
+      schoonmaakchecklist[12],
+      overig,
+    ],
     (err, result) => {
       if (err) {
         console.log(err);
