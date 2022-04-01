@@ -67,9 +67,13 @@ const schoonmaakLijst = [
   },
 ];
 
+const elektrischeTrekkenLijst = ["Lieren", "Staalkabels", "Keerwielen"];
+const puntTrekkenLijst = ["Ophangpunten", "Kettingen", "Loopwagens"];
+const bruggenLijst = ["Valbeveiliging", "Lampen/Decor"];
+
 const NewLogPage = () => {
   const handleSaveButton = async () => {
-    if (logDatum !== "" && logToneelmeester !== "" && logBericht !== "") {
+    if (logDatum !== "" && logToneelmeester !== "") {
       await submitPost();
       //alert("invoer succesvol opgeslagen");
       //window.location.replace("../logboek/");
@@ -87,10 +91,24 @@ const NewLogPage = () => {
   const [logTheater, setLogTheater] = useState("");
   const [logSchoonmaak, setLogSchoonmaak] = useState("");
   const [logOverig, setLogOverig] = useState("");
+  const [logNooduitgangen, setLogNooduitgangen] = useState("");
 
   // Checkboxes van de schoonmaaklijst
   const [checkedState, setCheckedState] = useState(
     new Array(schoonmaakLijst.length).fill(false)
+  );
+
+  // Checkboxes van de rigginglijsten
+  const [elektrischeTrekkenState, setElektrischeTrekkenState] = useState(
+    new Array(elektrischeTrekkenLijst.length).fill(false)
+  );
+
+  const [puntTrekkenState, setPuntTrekkenState] = useState(
+    new Array(puntTrekkenLijst.length).fill(false)
+  );
+
+  const [bruggenState, setBruggenState] = useState(
+    new Array(bruggenLijst.length).fill(false)
   );
 
   const handleOnChange = (position) => {
@@ -107,6 +125,10 @@ const NewLogPage = () => {
   //   setExpanded(isExpanded ? panel : false);
   // };
 
+  function toggleCheckbox(box) {
+    setLogNooduitgangen(!logNooduitgangen);
+  }
+
   const submitPost = () => {
     axios
       .post("http://localhost:3002/api/create", {
@@ -116,6 +138,9 @@ const NewLogPage = () => {
         theater: logTheater,
         schoonmaak: logSchoonmaak,
         schoonmaakchecklist: checkedState,
+        elektrischeTrekken: elektrischeTrekkenState,
+        puntTrekken: puntTrekkenState,
+        bruggen: bruggenState,
         overig: logOverig,
       })
       .then((response) => {
@@ -137,6 +162,9 @@ const NewLogPage = () => {
 
   return (
     <div className="new-log-form">
+      <div>
+        <h2>Nieuwe Log</h2>
+      </div>
       <div className="new-log-input">
         <TextField
           required
@@ -175,9 +203,70 @@ const NewLogPage = () => {
         />
       </div>
 
+      <div>
+        <h2>Rigging & Veiligheid</h2>
+      </div>
+
+      <div className="new-log-input">
+        <div className="schoonmaak-list">
+          <h5>Elektrische Trekken</h5>
+          {elektrischeTrekkenLijst.map((item, index) => (
+            <div key={index}>
+              <input
+                value={item}
+                type="checkbox"
+                onChange={() => handleOnChange(index)}
+              />
+              <span>{item}</span>
+            </div>
+          ))}
+        </div>
+        <div className="schoonmaak-list">
+          <h5>Punttrekken</h5>
+          {puntTrekkenLijst.map((item, index) => (
+            <div key={index}>
+              <input
+                value={item}
+                type="checkbox"
+                onChange={() => handleOnChange(index)}
+              />
+              <span>{item}</span>
+            </div>
+          ))}
+        </div>
+        <div className="schoonmaak-list">
+          <h5>Bruggen</h5>
+          {bruggenLijst.map((item, index) => (
+            <div key={index}>
+              <input
+                value={item}
+                type="checkbox"
+                onChange={() => handleOnChange(index)}
+              />
+              <span>{item}</span>
+            </div>
+          ))}
+        </div>
+
+        <div className="schoonmaak-list">
+          <h5>Algemeen</h5>
+          <div key="12345">
+            <input
+              value="nooduitgangen"
+              type="checkbox"
+              onChange={() => toggleCheckbox()}
+            />
+            <span>Nooduitgangen</span>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <h2>Show</h2>
+      </div>
+
       <div className="new-log-input">
         <TextField
-          required
           multiline
           id="standard-required"
           label="Opmerkingen Show"
@@ -210,6 +299,11 @@ const NewLogPage = () => {
           />
         </div>
       </div>
+
+      <div>
+        <h2>Schoonmaak</h2>
+      </div>
+
       <div className="new-log-input">
         <TextField
           multiline
@@ -236,6 +330,10 @@ const NewLogPage = () => {
             </div>
           ))}
         </div>
+      </div>
+
+      <div>
+        <h2>Overige zaken</h2>
       </div>
 
       <div className="new-log-input">
